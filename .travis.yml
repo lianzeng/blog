@@ -8,8 +8,7 @@ script:
   - hugo version
   - hugo
 before_deploy:
-- openssl aes-256-cbc -K $encrypted_f0193fe2c4ee_key -iv $encrypted_f0193fe2c4ee_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- openssl aes-256-cbc -K $encrypted_e4c0c22ea137_key -iv $encrypted_e4c0c22ea137_iv -in id_rsa.enc -out ~/.ssh/id_rsa -d 
 - chmod 600 ~/.ssh/id_rsa
 deploy:
   provider: script
