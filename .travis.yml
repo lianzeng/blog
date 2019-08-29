@@ -1,0 +1,19 @@
+dist: bionic
+addons:
+  ssh_known_hosts:
+  - zengliang.tech
+  snaps:
+  - hugo
+script:
+  - hugo version
+  - hugo
+before_deploy:
+- openssl aes-256-cbc -K $encrypted_f0193fe2c4ee_key -iv $encrypted_f0193fe2c4ee_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/public/ zengliang@zengliang.tech:/usr/share/nginx/html
+  on:
+    branch: master
