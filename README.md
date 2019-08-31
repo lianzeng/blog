@@ -1,2 +1,4 @@
 # blog
-sharing knowledge 
+
+  
+hugo server 
